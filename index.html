@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>座標とれ～る</title>
+    <title>EPSGとれーる</title>
     <link href="GeoCatch.css" rel='stylesheet' 　media="all">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
     <link rel="icon" href="favicon.ico" />
@@ -12,39 +12,26 @@
 
 <body>
     <main>
-        <font size="7"><img src="UDClogo_.png"> 座標とれ～る</font>
+        <font size="7">
+            <a href="https://urbandata-challenge.jp/news/udc2022prize"><img src="UDClogo_.png"></a> EPSGとれーる</font>
         <div class="jump_download">
             <span>　　　</span>
             <a class="csv_download" href="GeoCatch.csv" download>csvファイル</a>
+            
             <span>　　　　　　　</span>
-            <a class="github-button" href="https://cue-bu.github.io" data-size="large"
+            <a class="github-button" href="https://github.com/new-flathill/new-flathill.github.io" data-size="large"
                 aria-label="Use this GitHub Action new-flathill/new-flathill.github.io on GitHub">Jump to GitHub Page!!</a>
+            <a href="https://cue.gozaru.jp/">Cue部サイト</a>
         </div>
-        
-        <div style="padding:  15px 10px;  background: #98fb98;">市区町村名または自治体コードを入力してください</div>
+
+        <div style="padding:  15px 10px;  background: #98fb98;">市区町村名から座標系とEPSGコードを検索できます</div>
 
         <li class="li_center">
-            <!-- 市区町村名で調べる用のボックス -->
+            <div style="padding:  15px 10px; size: 10;">市区町村名または自治体コードを入力してください</div>
             <input class="municipalities" type="text" id="municipalities" list="NameList"
             placeholder="入力例：川越市（または 11201）" onchange=text_type() oninput=searchCity() onfocus=this.select()>
             <datalist id="NameList"></datalist>
             </input>
-            <br>
-            <!-- 自治体コードで調べる用のボックス -->
-            <!-- <input class="municipalities" type="text" id="municipality" style="ime-mode: inactive;"
-                placeholder="自治体コードを入れてください　　例：11002" onchange=getEPSG_code() onfocus=this.select()>
-         -->
-            <!-- <div class="explain_left"><br>
-                <textarea rows="4" cols="40" readonly>
-説明文を記入
-                </textarea>
-            </div>
-
-            <div class="explain_right"><br>
-                <textarea rows="4" cols="40" readonly>
-説明文を記入
-                </textarea>
-            </div> -->
         </li>
 
         <li class="li_center" id="single">
@@ -73,70 +60,75 @@
             <table border="1">
                 <tr>
                     <th colspan="4">測地系</th>
-                    <th colspan="4">投影法</th>
+                    <th colspan="2">座標系</th>
+                    <th colspan="3">投影法</th>
                     <th colspan="3"> EPSG </th>
                 </tr>
                 <!-- JGD2011の表作成部分 -->
                 <tr>
                     <th rowspan="6" colspan="2">日本測地系<br>（世界測地系）</th>
                     <th rowspan="3" colspan="2">JGD2011</th>
-                    <th rowspan="1" colspan="4">地理座標系</td>
+                    <th rowspan="1" colspan="2">地理座標系</td>
+                    <th rowspan="1" colspan="3">なし</td>
                     <td colspan="3" id="JGD2011_geo"></td>
                 </tr>
                 <tr>
                     <th rowspan="2" colspan="2">投影座標系</th>
-                    <th rowspan="1" colspan="2">UTM座標系</th>
+                    <th rowspan="1" colspan="3">UTM座標系</th>
                     <td colspan="3" id="JGD2011_utm"></td>
                 </tr>
                 <tr>
-                    <th rowspan="1" colspan="2">平面直角座標系</th>
+                    <th rowspan="1" colspan="3">平面直角座標系</th>
                     <td colspan="3" id="JGD2011_flat"></td>
                 </tr>
                 <!-- JGD2000の表作成部分 -->
                 <tr>
                     <th rowspan="3" colspan="2">JGD2000</th>
-                    <th rowspan="1" colspan="4">地理座標系</td>
+                    <th rowspan="1" colspan="2">地理座標系</td>
+                    <th rowspan="1" colspan="3">なし</td>
                     <td colspan="3" id="JGD2000_geo"></td>
                 </tr>
                 <tr>
                     <th rowspan="2" colspan="2">投影座標系</th>
-                    <th rowspan="1" colspan="2">UTM座標系</th>
+                    <th rowspan="1" colspan="3">UTM座標系</th>
                     <td colspan="3" id="JGD2000_utm"></td>
                 </tr>
                 <tr>
-                    <th rowspan="1" colspan="2">平面直角座標系</th>
+                    <th rowspan="1" colspan="3">平面直角座標系</th>
                     <td colspan="3" id="JGD2000_flat"></td>
                 </tr>
                 <!-- WGS84の表作成部分 -->
                 <tr>
                     <th rowspan="3" colspan="2">世界測地系</th>
                     <th rowspan="3" colspan="2">WGS 84</th>
-                    <th rowspan="1" colspan="4">地理座標系</td>
+                    <th rowspan="1" colspan="2">地理座標系</td>
+                    <th rowspan="1" colspan="3">なし</td>
                     <td colspan="3" id="WGS84_geo"></td>
                 </tr>
                 <tr>
                     <th rowspan="2" colspan="2">投影座標系</th>
-                    <th rowspan="1" colspan="2">UTM座標系</th>
+                    <th rowspan="1" colspan="3">UTM座標系</th>
                     <td colspan="3" id="WGS84_utm"></td>
                 </tr>
                 <tr>
-                    <th rowspan="1" colspan="2">Webメルカトル</th>
+                    <th rowspan="1" colspan="3">Webメルカトル</th>
                     <td colspan="3" id="WGS_mer"></td>
                 </tr>
                 <!-- 旧日本測地系の表作成部分 -->
                 <tr>
                     <th rowspan="3" colspan="2">旧日本測地系</th>
-                    <th rowspan="3" colspan="2">TOKYO<br>（TKY）</th>
-                    <th rowspan="1" colspan="4">地理座標系</td>
+                    <th rowspan="3" colspan="2">TOKYO(TKY)</th>
+                    <th rowspan="1" colspan="2">地理座標系</td>
+                    <th rowspan="1" colspan="3">なし</td>
                     <td colspan="3" id="tky_geo"></td>
                 </tr>
                 <tr>
                     <th rowspan="2" colspan="2">投影座標系</th>
-                    <th rowspan="1" colspan="2">UTM座標系</th>
+                    <th rowspan="1" colspan="3">UTM座標系</th>
                     <td colspan="3" id="tky_utm"></td>
                 </tr>
                 <tr>
-                    <th rowspan="1" colspan="2">平面直角座標系</th>
+                    <th rowspan="1" colspan="3">平面直角座標系</th>
                     <td colspan="3" id="tky_flat"></td>
                 </tr>
             </table>
@@ -194,70 +186,75 @@
             <table border="1" align="left" class="left_table">
                 <tr>
                     <th colspan="4">測地系</th>
-                    <th colspan="4">投影法</th>
+                    <th colspan="2">座標系</th>
+                    <th colspan="3">投影法</th>
                     <th colspan="3"> EPSG </th>
                 </tr>
                 <!-- JGD2011の表作成部分 -->
                 <tr>
                     <th rowspan="6" colspan="2">日本測地系<br>（世界測地系）</th>
                     <th rowspan="3" colspan="2">JGD2011</th>
-                    <th rowspan="1" colspan="4">地理座標系</td>
+                    <th rowspan="1" colspan="2">地理座標系</td>
+                    <th rowspan="1" colspan="3">なし</td>
                     <td colspan="3" id="JGD2011_geo_left"></td>
                 </tr>
                 <tr>
                     <th rowspan="2" colspan="2">投影座標系</th>
-                    <th rowspan="1" colspan="2">UTM座標系</th>
+                    <th rowspan="1" colspan="3">UTM座標系</th>
                     <td colspan="3" id="JGD2011_utm_left"></td>
                 </tr>
                 <tr>
-                    <th rowspan="1" colspan="2">平面直角座標系</th>
+                    <th rowspan="1" colspan="3">平面直角座標系</th>
                     <td colspan="3" id="JGD2011_flat_left"></td>
                 </tr>
                 <!-- JGD2000の表作成部分 -->
                 <tr>
                     <th rowspan="3" colspan="2">JGD2000</th>
-                    <th rowspan="1" colspan="4">地理座標系</td>
+                    <th rowspan="1" colspan="2">地理座標系</td>
+                    <th rowspan="1" colspan="3">なし</td>
                     <td colspan="3" id="JGD2000_geo_left"></td>
                 </tr>
                 <tr>
                     <th rowspan="2" colspan="2">投影座標系</th>
-                    <th rowspan="1" colspan="2">UTM座標系</th>
+                    <th rowspan="1" colspan="3">UTM座標系</th>
                     <td colspan="3" id="JGD2000_utm_left"></td>
                 </tr>
                 <tr>
-                    <th rowspan="1" colspan="2">平面直角座標系</th>
+                    <th rowspan="1" colspan="3">平面直角座標系</th>
                     <td colspan="3" id="JGD2000_flat_left"></td>
                 </tr>
                 <!-- WGS84の表作成部分 -->
                 <tr>
                     <th rowspan="3" colspan="2">世界測地系</th>
                     <th rowspan="3" colspan="2">WGS 84</th>
-                    <th rowspan="1" colspan="4">地理座標系</td>
+                    <th rowspan="1" colspan="2">地理座標系</td>
+                    <th rowspan="1" colspan="3">なし</td>
                     <td colspan="3" id="WGS84_geo_left"></td>
                 </tr>
                 <tr>
                     <th rowspan="2" colspan="2">投影座標系</th>
-                    <th rowspan="1" colspan="2">UTM座標系</th>
+                    <th rowspan="1" colspan="3">UTM座標系</th>
                     <td colspan="3" id="WGS84_utm_left"></td>
                 </tr>
                 <tr>
-                    <th rowspan="1" colspan="2">Webメルカトル</th>
+                    <th rowspan="1" colspan="3">Webメルカトル</th>
                     <td colspan="3" id="WGS_mer_left"></td>
                 </tr>
                 <!-- 旧日本測地系の表作成部分 -->
                 <tr>
                     <th rowspan="3" colspan="2">旧日本測地系</th>
                     <th rowspan="3" colspan="2">TOKYO<br>（TKY）</th>
-                    <th rowspan="1" colspan="4">地理座標系</td>
+                    <th rowspan="1" colspan="2">地理座標系</td>
+                    <th rowspan="1" colspan="3">なし</td>
                     <td colspan="3" id="tky_geo_left"></td>
                 </tr>
                 <tr>
                     <th rowspan="2" colspan="2">投影座標系</th>
-                    <th rowspan="1" colspan="2">UTM座標系</th>
+                    <th rowspan="1" colspan="3">UTM座標系</th>
                     <td colspan="3" id="tky_utm_left"></td>
                 </tr>
                 <tr>
-                    <th rowspan="1" colspan="2">平面直角座標系</th>
+                    <th rowspan="1" colspan="3">平面直角座標系</th>
                     <td colspan="3" id="tky_flat_left"></td>
                 </tr>
             </table>
@@ -265,38 +262,41 @@
             <table border="1" align="right" class="right_table">
                 <tr>
                     <th colspan="4">測地系</th>
-                    <th colspan="4">投影法</th>
+                    <th colspan="2">座標系</th>
+                    <th colspan="3">投影法</th>
                     <th colspan="3"> EPSG </th>
                 </tr>
                 <!-- JGD2011の表作成部分 -->
                 <tr>
                     <th rowspan="6" colspan="2">日本測地系<br>（世界測地系）</th>
                     <th rowspan="3" colspan="2">JGD2011</th>
-                    <th rowspan="1" colspan="4">地理座標系</td>
+                    <th rowspan="1" colspan="2">地理座標系</td>
+                    <th rowspan="1" colspan="3">なし</td>
                     <td colspan="3" id="JGD2011_geo_right"></td>
                 </tr>
                 <tr>
                     <th rowspan="2" colspan="2">投影座標系</th>
-                    <th rowspan="1" colspan="2">UTM座標系</th>
+                    <th rowspan="1" colspan="3">UTM座標系</th>
                     <td colspan="3" id="JGD2011_utm_right"></td>
                 </tr>
                 <tr>
-                    <th rowspan="1" colspan="2">平面直角座標系</th>
+                    <th rowspan="1" colspan="3">平面直角座標系</th>
                     <td colspan="3" id="JGD2011_flat_right"></td>
                 </tr>
                 <!-- JGD2000の表作成部分 -->
                 <tr>
                     <th rowspan="3" colspan="2">JGD2000</th>
-                    <th rowspan="1" colspan="4">地理座標系</td>
+                    <th rowspan="1" colspan="2">地理座標系</td>
+                    <th rowspan="1" colspan="3">なし</td>
                     <td colspan="3" id="JGD2000_geo_right"></td>
                 </tr>
                 <tr>
                     <th rowspan="2" colspan="2">投影座標系</th>
-                    <th rowspan="1" colspan="2">UTM座標系</th>
+                    <th rowspan="1" colspan="3">UTM座標系</th>
                     <td colspan="3" id="JGD2000_utm_right"></td>
                 </tr>
                 <tr>
-                    <th rowspan="1" colspan="2">平面直角座標系</th>
+                    <th rowspan="1" colspan="3">平面直角座標系</th>
                     <td colspan="3" id="JGD2000_flat_right"></td>
                 </tr>
 
@@ -304,16 +304,17 @@
                 <tr>
                     <th rowspan="3" colspan="2">世界測地系</th>
                     <th rowspan="3" colspan="2">WGS 84</th>
-                    <th rowspan="1" colspan="4">地理座標系</td>
+                    <th rowspan="1" colspan="2">地理座標系</td>
+                    <th rowspan="1" colspan="3">なし</td>
                     <td colspan="3" id="WGS84_geo_right"></td>
                 </tr>
                 <tr>
                     <th rowspan="2" colspan="2">投影座標系</th>
-                    <th rowspan="1" colspan="2">UTM座標系</th>
+                    <th rowspan="1" colspan="3">UTM座標系</th>
                     <td colspan="3" id="WGS84_utm_right"></td>
                 </tr>
                 <tr>
-                    <th rowspan="1" colspan="2">Webメルカトル</th>
+                    <th rowspan="1" colspan="3">Webメルカトル</th>
                     <td colspan="3" id="WGS_mer_right"></td>
                 </tr>
 
@@ -321,16 +322,17 @@
                 <tr>
                     <th rowspan="3" colspan="2">旧日本測地系</th>
                     <th rowspan="3" colspan="2">TOKYO<br>（TKY）</th>
-                    <th rowspan="1" colspan="4">地理座標系</td>
+                    <th rowspan="1" colspan="2">地理座標系</td>
+                    <th rowspan="1" colspan="3">なし</td>
                     <td colspan="3" id="tky_geo_right"></td>
                 </tr>
                 <tr>
                     <th rowspan="2" colspan="2">投影座標系</th>
-                    <th rowspan="1" colspan="2">UTM座標系</th>
+                    <th rowspan="1" colspan="3">UTM座標系</th>
                     <td colspan="3" id="tky_utm_right"></td>
                 </tr>
                 <tr>
-                    <th rowspan="1" colspan="2">平面直角座標系</th>
+                    <th rowspan="1" colspan="3">平面直角座標系</th>
                     <td colspan="3" id="tky_flat_right"></td>
                 </tr>
             </table>
@@ -394,11 +396,8 @@
             for (f=0; f<count; f++){
                 OldList.removeChild(OldOptions[0])
             }
-            // 検索都市名を取得(入力されるたびに)(自治体コードの場合は動かさない)
+            // 検索都市名を取得(入力されるたびに)
             var CityName = document.getElementById("municipalities").value;
-            if(typeof(CityName) == Number){
-                return
-            }
             var list = document.getElementById("NameList")
             for(let g=0; g<csv.length; g++){
                 if (csv[g][3] == CityName || csv[g][5] == CityName || csv[g][6] == CityName){
@@ -519,11 +518,11 @@
             if (flag != 1){
                 hidden(2)
                 var error_name = document.getElementById("municipalities").value
-                var error_sentence = "「" + error_name + "」は存在しません。"
+                var error_sentence = "市区町村まで入力をお願いします。"
                 document.getElementById("error").innerHTML = error_sentence
-                document.getElementById("error_under").innerHTML = "「市区町村」まで必要だよ"
+                document.getElementById("error_under").innerHTML = "例：　☓ 川越　→　〇 川越市"
             }
-        }        
+        }
 
         /**
          * 市区町村座標取得
@@ -608,7 +607,7 @@
                 var error_sentence = "自治体コードが誤っています"
                 document.getElementById("error").innerHTML = error_sentence
             }
-        }        
+        }  
 
         //CSVファイルを読み込む関数getCSV()の定義
         function getCSV(){
@@ -649,5 +648,4 @@
         }
 
     </script>
-
 </body>
