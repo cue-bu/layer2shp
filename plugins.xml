@@ -1,26 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugins>
-  <plugin
-      name="layer2shp"
-      version="1.0.0"
-      plugin_id="1001"
-      experimental="False"
-      deprecated="False"
-      qgis_minimum_version="3.0"
-      qgis_maximum_version="3.99"
-      author_name="S.hiramatsu"
-      email="cue.bu2025@gmail.com"
-      changelog="初回公開版"
-      tags="python,layer,shp,output"
-      homepage="https://cue.gozaru.jp/"
-      repository="https://cue-bu.github.io/cue-bu/plugins.xml"
-      tracker=""
-      icon="https://cue-bu.github.io/cue-bu/icon/lyr2shp.png"
-      downloads="0"
-      download_url="https://cue-bu.github.io/cue-bu/layer2shp.zip"
-      create_date="2025-04-01"
-      update_date="2026-03-03"
-      description="Layer to Shapefile plugin　表示しているレイヤを一括でshpとして出力します。">
-  </plugin>
+  <pyqgis_plugin name="layer2shp" version="1.0.0">
+    <description>Layer to Shapefile plugin</description>
+    <version>1.0.0</version>
+    <qgis_minimum_version>3.0</qgis_minimum_version>
+    <file_name>layer2shp.zip</file_name>
+    <author>cue-bu</author>
+    <download_url>
+      https://cue-bu.github.io/cue-bu/layer2shp.zip
+    </download_url>
+  </pyqgis_plugin>
 </plugins>
-
