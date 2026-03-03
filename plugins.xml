@@ -2,7 +2,6 @@
 <plugins>
   <pyqgis_plugin
       name="layer2shp"
-	  description="Layer to Shapefile plugin"
       version="3.10.3"
       plugin_id="1001"
       experimental="False"
